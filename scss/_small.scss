@@ -1,0 +1,131 @@
+/* Prevent adjustments of font size after orientation changes.  */
+html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+    height: 100%;
+}
+
+/*---- apply a natural box layout model to all elements -------*/
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+	font-family: $defaultFont;
+	font-size: 16px;
+	font-weight: $lightWeight;
+    min-width: 320px;
+}
+
+    header {
+        display: grid;
+        grid-template-columns: 51px auto;
+        align-items: center;
+        padding: .5rem 2vw;
+        h1 {
+            font-size: 1.6rem;
+            font-weight: $lightWeight;
+            padding-left: .5rem;
+            color: $primaryColor;
+        }
+    }
+
+nav {
+    button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: orange;
+        border: none;
+        font-size: 1.5rem;
+        color: black;
+        padding: .5rem 2vw .5rem 1rem;
+
+        
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+       background-color: $menuColor;
+       position: absolute;
+       right: 0;
+       width: 100%;
+       display: none;
+    }
+
+    ul.open {display:block;}
+
+    ul li {border-bottom: 1px solid rgba(0,0,0,0.1);}
+
+    ul li a {
+        display: block;
+        padding: .9rem 2vw;
+        font-weight: $lightWeight;
+        color: rgba(255,255,255, 0.9);
+        text-decoration: none;
+        text-align: right;
+    }
+    ul li.active a {background-color: darken($menuColor, 8%);}
+
+    ul li a:hover{background-color: darken($menuColor, 4%);}
+
+} //nav ending
+
+main h1 {
+    color: black;
+    text-align: center;
+}
+
+main img {
+    width: 100%;
+    height: auto;
+}
+
+//loop creation
+@for $i from 1 through 12 {
+    $w: calc($i /12) * 100%;
+    .small-#{$i} {flex-basis: $w;}
+}
+
+//rows
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    margin: 1rem 0;
+    padding: 0 8px;
+    color:black;
+}
+
+  
+//columns
+.column {
+    padding: 0 8px;
+    margin: 8px 0;
+    border: transparent 1px; //small box
+}
+
+.line, .round, .fill, .shadow {padding: 8px 8px;}
+.line{border: 1px #bbb solid}
+.round{border-radius: 9px;}
+.fill{background-color: orange;}
+.shadow{box-shadow: 0 0 10px orange;}
+
+//footer
+#footerWrapper {
+    background: $menuColor;
+    color: black;
+}
+footer {
+    padding: 0.5rem $gutter;
+    p.legal {
+        margin: 0;
+        font-weight: $boldWeight;
+        text-align: center;
+    }
+}
